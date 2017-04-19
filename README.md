@@ -4,4 +4,4 @@ este repositório guarda sketches do processing.py, utilizados na disciplina Pro
 
 Todos os scripts são escritos em Python.
 
-Encontre a numeração dos exercícios e seus enunciados no arquivo exercicios_e_desafios.txt.
+Encontre a numeração dos exercícios e seus enunciados no arquivo [exercicios_e_desafios.txt](https://github.com/emanoelbarreiros/processing/blob/master/exercicios_e_desafios.txt "link").
