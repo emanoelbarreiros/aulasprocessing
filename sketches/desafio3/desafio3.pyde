@@ -1,3 +1,29 @@
+'''
+Autor: Emanoel Barreiros, Univesidade de Pernambuco
+Este código é uma possível implementação para o desafio 3, proposto em https://github.com/emanoelbarreiros/aulasprocessing como
+parte do material de aula da disciplina Programação 1 (introdução à programação) do curso de Licenciatura em Computação da 
+Universidade de Pernambuco, Campus Garanhuns
+
+Para salvar a execução do sketch, a qualquer momento pressione a tecla Z do teclado. Pressione Z novamente para parar de salvar.
+Utilize a ferramenta Movie Maker no próprio Processing para construir um vídeo a partir das imagens salvas pelo sistema.
+
+Descrição do desafio: Faça um jogo onde você controle um tanque no centro da tela. Este tanque não deve se mexer, mas 
+seu canhão sim. Ele deve apontar para o mouse. A cada X segundos (você define o X), faça surgir um inimigo em um lugar 
+aleatorio na borda da tela. Este inimigo deve se movimentar em linha reta até você com velocidade constante. Ao clique 
+do mouse seu tanque deve atirar uma bala. Se suas balas disparadas atingirem um inimigo, ele deve desaparecer, assim como 
+sua bala. Se algum inimigo atingir você, todo o jogo acaba.
+
+Como o programa funciona:
+    * Use o mouse para definir a direção da arma do tanque
+    * Clique no mouse para o tanque atirar
+    * A qualquer momento pressione no teclado:
+        - S para ativar o modo sniper
+        - R para reiniciar a partir do estado inicial
+        - Z para iniciar o salvamento dos frames da execução. Ao pressionar Z novamente o programa deixa de salvar os frames.
+
+DICA: Utilize a ferramenta Movie Maker do próprio Processing para fazer um vídeo com as imagens salvas.
+'''
+
 add_library('sound')
 
 tanque = None
@@ -15,7 +41,7 @@ tamanhoBala = 5
 mira = None
 morreu = False
 sniper = False
-  
+salvar = False
 
 def setup():
     # global eh necessario para acessar a variavel chamada pacman de escopo global
@@ -74,11 +100,16 @@ def draw():
             inimigos[i].atualizar()
             inimigos[i].pintar()
             
+    if salvar:
+        saveFrame('frames/##########.tiff')
+            
 def keyPressed():
     global morreu
     global inimigos
     global balas
     global timer
+    global salvar
+    
     if key == 'r' or key == 'R':
         morreu = False
         inimigos = []
@@ -86,6 +117,8 @@ def keyPressed():
         timer.definirTempoAlarme(2)
     if key == 's' or key == 'S':
         tanque.sniper = not tanque.sniper
+    if key == 'z' or key == 'Z':
+        salvar = not salvar
         
 def reduzirSpawn():
     global timer

@@ -6,6 +6,15 @@ Universidade de Pernambuco, Campus Garanhuns
 
 Para salvar a execução do sketch, a qualquer momento pressione a tecla Z do teclado. Pressione Z novamente para parar de salvar.
 Utilize a ferramenta Movie Maker no próprio Processing para construir um vídeo a partir das imagens salvas pelo sistema.
+
+Descrição do desafio: Implemente o famoso joguinho Snake.
+
+Como o programa funciona:
+    * Utilize as setas do teclado para controlar a cobra
+    * A qualquer momento pressione no teclado:
+        - Z para iniciar o salvamento dos frames da execução. Ao pressionar Z novamente o programa deixa de salvar os frames.
+
+DICA: Utilize a ferramenta Movie Maker do próprio Processing para fazer um vídeo com as imagens salvas.
 '''
 
 largura = 600

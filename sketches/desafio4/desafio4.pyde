@@ -2,7 +2,7 @@
 Autor: Emanoel Barreiros, Univesidade de Pernambuco
 Este código é uma possível implementação para o desafio 4, proposto em https://github.com/emanoelbarreiros/aulasprocessing como
 parte do material de aula da disciplina Programação 1 (introdução à programação) do curso de Licenciatura em Computação da 
-Universidade de Pernambuco, Campus Garanhuns
+Universidade de Pernambuco, Campus Garanhuns.
 
 Para salvar a execução do sketch, a qualquer momento pressione a tecla Z do teclado. Pressione Z novamente para parar de salvar.
 Utilize a ferramenta Movie Maker no próprio Processing para construir um vídeo a partir das imagens salvas pelo sistema.

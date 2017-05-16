@@ -1,3 +1,26 @@
+'''
+Autor: Emanoel Barreiros, Univesidade de Pernambuco
+Este código é uma possível implementação para o desafio 2, proposto em https://github.com/emanoelbarreiros/aulasprocessing como
+parte do material de aula da disciplina Programação 1 (introdução à programação) do curso de Licenciatura em Computação da 
+Universidade de Pernambuco, Campus Garanhuns
+
+Para salvar a execução do sketch, a qualquer momento pressione a tecla Z do teclado. Pressione Z novamente para parar de salvar.
+Utilize a ferramenta Movie Maker no próprio Processing para construir um vídeo a partir das imagens salvas pelo sistema.
+
+Descrição do desafio: Simule um sistema físico, onde um canhão atira balas e estas fazem uma trajetória curva, 
+como seria no mundo real. Use o conceito de aceleração para simular a gravidade. O canhão deve ser fixo na tela, 
+mas o angulo do tiro deve ser determinado pela posição do mouse. As balas que são atiradas devem permanecer na tela, 
+mas param quando atingem o chão.
+
+Como o programa funciona:
+    * Use o mouse para definir a inclinação do canhão
+    * Clique com o mouse para atirar
+    * A qualquer momento pressione no teclado:
+        - Z para iniciar o salvamento dos frames da execução. Ao pressionar Z novamente o programa deixa de salvar os frames.
+
+DICA: Utilize a ferramenta Movie Maker do próprio Processing para fazer um vídeo com as imagens salvas.
+'''
+
 distanciaChao = 50
 localizacaoBala = None
 velVBala = 0
@@ -6,6 +29,7 @@ atirar = False
 balas = []
 velocidades = []
 diametroBala = 10
+salvar = False
 
 def setup():
     size(700, 400)
@@ -55,7 +79,10 @@ def draw():
         else:
             velocidades[i].y += gravidade        
             balas[i].add(velocidades[i])
-        ellipse(balas[i].x, balas[i].y, diametroBala, diametroBala)   
+        ellipse(balas[i].x, balas[i].y, diametroBala, diametroBala)
+        
+    if salvar:
+        saveFrame('frames/##########.png')   
                 
 def mouseReleased():
     global atirar
@@ -66,5 +93,9 @@ def bateuChao(bala, distanciaChao):
         return True
     else:
         return False
-    
+
+def keyPressed():
+    global salvar
+    if key == 'Z' or key == 'z':
+        salvar = not salvar
     
