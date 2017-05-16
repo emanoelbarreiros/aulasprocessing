@@ -16,7 +16,7 @@ def draw():
     
     if mousePressed and velocidade == 0:
         velocidade = 2
-        aceleracao = 0.1
+        aceleracao = 0.5
     
     ellipse(width/2, posicaoY, largura, largura)
     velocidade = velocidade + aceleracao
