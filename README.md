@@ -2,6 +2,8 @@
 
 este repositório guarda sketches do processing.py, utilizados na disciplina Programação 1, do curso de Licenciatura em Computação da UPE, Campus Garanhuns.
 
+Guia de aulas: https://drive.google.com/file/d/0B8qU8zm4IZWkaWMxbnhUTUFOLU0/view?usp=sharing
+
 Todos os scripts são escritos em Python.
 
 # Exercícios
