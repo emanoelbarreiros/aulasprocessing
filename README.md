@@ -23,6 +23,7 @@ Todos os scripts são escritos em Python.
 13. Baseado no programa do exercício 12, faça com que um novo círculo seja criado a cada clique do mouse. Os círculos devem se mover indefinidamente.
 14. Faça um programa que desenhe círculos na tela a cada clique do mouse, mas quando você clicar dentro de um círculo já existente, ele deve ser removido da tela.
 15. Faça um programa que simule pingos caindo do topo da janela. Faça com que os pingos sejam adicionados em uma posição aleatória no topo da tela a cada 5 frames. Ao chegar no limite inferior da janela, reposicione aquele pingo no topo da tela, na mesma posicao X. Não perca nenhum pingo, a chuva com o tempo vai ficando cada vez mais "grossa". Inicialmente faça com que os pingos tenham velocidade constante, mas depois adicione o conceito de aceleração de forma a simular a gravidade.
+16. Implemente um programa que, ao clicar na tela, ele desenhe um ponto na tela. Após adicionar os pontos que desejar, quando o usuario pressionar uma tecla do teclado (qualquer uma, você escolhe), ele ligue todos os pontos e crie um polígono fechado.
 
 # Desafios
 1. Faça com que o pacman do Exercício 7 oriente-se em relação ao mouse (olhe para o mouse) e persiga o mouse como seu alvo de movimento. [Código do desafio 1](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio1 "clique :)")
