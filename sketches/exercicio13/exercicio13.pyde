@@ -10,6 +10,8 @@ def setup():
 def draw():
     global vx, vy, xBola, yBola
     
+    background(200)
+    
     for i in range(len(xBola)):
         if xBola[i] >= width - raio:
             vx[i] = -vx[i]
@@ -25,8 +27,6 @@ def draw():
         
         xBola[i] = xBola[i] + vx[i]
         yBola[i] = yBola[i] + vy[i]
-        
-        background(200)
         
         ellipse(xBola[i], yBola[i], 2*raio, 2*raio)
     
