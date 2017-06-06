@@ -6,17 +6,17 @@ Grafo grafo;
 int vertices = 0;
 int MODO_VERTICE = 0;
 int MODO_ARESTA = 1;
-int MODO_EXECUCAO = 2;
+int MODO_EXECUCAO_LARGURA = 2;
+int MODO_EXECUCAO_PROFUNDIDADE = 3;
 int modoEdicao = MODO_VERTICE;
 Vertice verticeOrigem = null;
 Vertice verticeDestino = null;
-BuscaEmProfundidade bep = null;
+Thread algoritmo = null;
 boolean rodando = false;
 
 void setup(){
-  size(400, 400);
+  size(600, 400);
   grafo = new Grafo();
-  bep = new BuscaEmProfundidade();
 }
 
 
@@ -37,6 +37,11 @@ void draw() {
       corTexto = 255;
     }
     //pinta circulo do vertice
+    if (v.getFoco()) {
+      strokeWeight(3);
+    } else {
+      strokeWeight(1);
+    }
     ellipse(v.getX(), v.getY(), largura, largura);
     textSize(18);
     fill(corTexto);
@@ -46,7 +51,13 @@ void draw() {
     //pinta tempo de descoberta
     textSize(12);
     fill(0);
-    text(v.getDescoberta(), v.getX() - 5, v.getY() - largura/2 - 5);
+    String descoberta;
+    if (v.getDescoberta() == Integer.MAX_VALUE){
+      descoberta = "inf"; 
+    } else {
+      descoberta = "" + v.getDescoberta();
+    }
+    text(descoberta, v.getX() - 5, v.getY() - largura/2 - 5);
     //pinta tempo de finalizacao
     text(v.getFinalizacao(), v.getX() - 5, v.getY() + largura/2 + 15);
     
@@ -65,10 +76,18 @@ void draw() {
     seta(a.getOrigem().getX(), a.getOrigem().getY(), a.getDestino().getX(), a.getDestino().getY()); 
   }
   
-  if(modoEdicao == MODO_EXECUCAO && !rodando) {
+  if((modoEdicao == MODO_EXECUCAO_PROFUNDIDADE || modoEdicao == MODO_EXECUCAO_LARGURA) && !rodando) {
     rodando = true;
-    bep.setGrafo(grafo);
-    bep.start();
+    if (modoEdicao == MODO_EXECUCAO_PROFUNDIDADE) {
+      BuscaEmProfundidade bf = new BuscaEmProfundidade();
+      bf.setGrafo(grafo);
+      algoritmo = bf;
+    } else if (modoEdicao == MODO_EXECUCAO_LARGURA) {
+      BuscaEmLargura bl = new BuscaEmLargura();
+      bl.setGrafo(grafo);
+      algoritmo = bl;
+    }
+    algoritmo.start();
   }
 }
 
@@ -120,13 +139,19 @@ void keyPressed(){
     modoEdicao = MODO_ARESTA;
   }
   
-  if (key == 'e' || key == 'E') {
-    modoEdicao = MODO_EXECUCAO;
+  if (key == 'p' || key == 'P') {
+    modoEdicao = MODO_EXECUCAO_PROFUNDIDADE;
   }
   
-  synchronized(bep) {
-    if (key == 'p' || key == 'P') {
-      bep.notifyAll();
+  if (key == 'l' || key == 'L') {
+    modoEdicao = MODO_EXECUCAO_LARGURA;
+  }
+  
+  if (algoritmo != null ){
+    synchronized(algoritmo) {
+      if (key == 'n' || key == 'N') {
+        algoritmo.notifyAll();
+      }
     }
   }
 }
@@ -150,6 +175,8 @@ class Vertice {
   private int descoberta;
   
   private int finalizacao;
+  
+  private boolean foco;
   
   public Vertice(int id, int x, int y) {
     this.id = id;
@@ -211,6 +238,14 @@ class Vertice {
 
   public void setY(int y) {
     this.y = y;
+  }
+  
+  public boolean getFoco() {
+    return this.foco;
+  }
+  
+  public void setFoco(boolean foco){
+    this.foco = foco;
   }
 
   @Override
@@ -486,4 +521,62 @@ class BuscaEmProfundidade extends Thread {
     this.grafo = grafo;
   }
 
+}
+
+class BuscaEmLargura extends Thread {
+  private Grafo grafo;
+  private Vertice raiz;
+  private ArrayList<Vertice> auxiliar;
+  
+  public void run() {
+    raiz = grafo.getVertices().get(0);
+    for(Vertice v : grafo.getVertices()){
+      if(!v.equals(raiz)){
+        v.setDescoberta(Integer.MAX_VALUE);
+        v.setPredecessor(null);
+        v.setCor(Vertice.BRANCO);
+      }
+    }
+    
+    raiz.setCor(Vertice.CINZA);
+    raiz.setDescoberta(0);
+    raiz.setPredecessor(null);
+    
+    auxiliar = new ArrayList<Vertice>();
+    auxiliar.add(raiz);
+    
+    Vertice u = null;
+    while(auxiliar.size() > 0) {
+      synchronized(this){
+        try {
+          u = auxiliar.remove(0);
+              for (Vertice v : grafo.adjacentes(u)) {
+                wait();
+                if(v.getCor() == Vertice.BRANCO) {
+                  v.setCor(Vertice.CINZA);
+                  v.setDescoberta(u.getDescoberta() + 1);
+                  v.setPredecessor(u);
+                  auxiliar.add(v);
+                } else {
+                  v.setFoco(true);
+                  wait();
+                  v.setFoco(false);
+                }
+              }
+          wait();
+          u.setCor(Vertice.PRETO);
+        } catch(Exception e) {
+          System.out.println(e.getMessage());
+        }
+      }
+    }
+  }
+  
+  public Grafo getGrafo() {
+    return this.grafo;
+  }
+  
+  public void setGrafo(Grafo grafo){
+    this.grafo = grafo;
+  }
 }
