@@ -43,6 +43,8 @@ Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos
 1. Daniel Sales e José Neto
 2. Ananda e Hemerson
 3. Douglas e Hermyson
+   * Pong
+   * Flappy bird
 4. Ana Cecília e Alexandre
 5. Victor e Amauri
 6. Matheus e Alisson
