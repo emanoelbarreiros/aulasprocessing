@@ -36,3 +36,15 @@ Todos os scripts são escritos em Python.
 4. Implemente o jogo da vida (também conhecido como Conway's Game of Life), criado pelo matemático John Conway. O jogo da vida não é um jogo tradicional, pois não há jogador, na realidade está mais para uma simulação, pois a cada iteração algumas regras são avaliadas e decide-se o próximo estado do mapa. As regras do jogo podem ser encontradas neste [link](https://pt.wikipedia.org/wiki/Jogo_da_vida). Um exemplo do jogo da vida implementado pode ser encontrado [aqui](https://bitstorm.org/gameoflife/). Para mais informações, você também pode assistir esses videos [aqui](https://www.youtube.com/watch?v=R9Plq-D1gEk) e [aqui](https://www.youtube.com/watch?v=E8kUJL04ELA). Exemplo de como ele pode ficar aqui: [vídeo](https://youtu.be/c2lNfb4BxdI) [Código fonte aqui](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio4)
 5. Implemente o famoso joguinho Snake. Exemplo de como ele pode ficar aqui: [vídeo](https://youtu.be/t3OFa5Z9J7I) [Código fonte aqui](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio5)
 6. Implemente um relógio analógico, com ponteiros das horas, minutos e segundos. Use as funções [hour()](https://processing.org/reference/hour_.html), [minute()](https://processing.org/reference/minute_.html) e [second()](https://processing.org/reference/second_.html) para obter os valores de horas, minutos e segundos atuais do sistema, respectivamente. Pinte todos os marcadores de minutos, diferenciando de alguma maneira os marcadores a cada cinco minutos, para ficar mais fácil de ler as horas. Faça o ponteiro dos segundos "ticar" a cada segundo como em um relógio de quartzo. No vídeo parece que o ponteiro dos segundos está bugado, mas é um problema com a captura do vídeo. Executando o código localmente está perfeito.[vídeo](https://youtu.be/tdVnx7T5YCM)
+
+# Projetos
+Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 18/07/2017.
+
+1. Daniel Sales e José Neto
+2. Ananda e Hemerson
+3. Douglas e Hermyson
+4. Ana Cecília e Alexandre
+5. Victor e Amauri
+6. Matheus e Alisson
+7. Abraão e Jonathan
+8. Antônio e Rinaldo
