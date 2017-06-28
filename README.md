@@ -37,7 +37,7 @@ Todos os scripts são escritos em Python.
 5. Implemente o famoso joguinho Snake. Exemplo de como ele pode ficar aqui: [vídeo](https://youtu.be/t3OFa5Z9J7I) [Código fonte aqui](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio5)
 6. Implemente um relógio analógico, com ponteiros das horas, minutos e segundos. Use as funções [hour()](https://processing.org/reference/hour_.html), [minute()](https://processing.org/reference/minute_.html) e [second()](https://processing.org/reference/second_.html) para obter os valores de horas, minutos e segundos atuais do sistema, respectivamente. Pinte todos os marcadores de minutos, diferenciando de alguma maneira os marcadores a cada cinco minutos, para ficar mais fácil de ler as horas. Faça o ponteiro dos segundos "ticar" a cada segundo como em um relógio de quartzo. No vídeo parece que o ponteiro dos segundos está bugado, mas é um problema com a captura do vídeo. Executando o código localmente está perfeito.[vídeo](https://youtu.be/tdVnx7T5YCM)
 7. Implemente o jogo Centipede, do Atari.
-8. Implemente um jogo de futebol de botão. 
+8. Implemente um jogo de futebol de botão.
 
 # Projetos
 Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 18/07/2017.
