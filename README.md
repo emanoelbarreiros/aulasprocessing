@@ -43,6 +43,8 @@ Todos os scripts são escritos em Python.
 Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 18/07/2017.
 
 1. Daniel Sales e José Neto
+   * Joguinho da nave, tipo Truxton
+   * Tetris
 2. Ananda e Hemerson
    * Breakout
    * Asteroids
@@ -53,6 +55,8 @@ Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos
    * Campo minado
    * Pong
 5. Victor e Amauri
+   * Labirinto
+   * Pong
 6. Matheus e Alisson
    * Pacman
    * Space invaders
