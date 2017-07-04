@@ -62,7 +62,8 @@ Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos
    * Pacman
    * Space invaders
 7. Abraão e Jonathan
-   * A DEFINIR
+   * Asteroids
+   * Breakout
 8. Antônio e Rinaldo
    * A DEFINIR
 9. James
