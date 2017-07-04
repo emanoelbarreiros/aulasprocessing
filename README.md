@@ -45,7 +45,7 @@ Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos
 
 1. Daniel Sales e José Neto
    * Joguinho da nave, tipo Truxton
-   * Tetris
+   * Breakout
 2. Ananda e Hemerson
    * Breakout
    * Asteroids
