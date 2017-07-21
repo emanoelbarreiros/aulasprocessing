@@ -45,27 +45,18 @@ Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos
 
 1. Daniel Sales e José Neto
    * Joguinho da nave, tipo Truxton
-   * Breakout
+   * Memória dos círculos
 2. Ananda e Hemerson
    * Breakout
    * Asteroids
 3. Douglas e Hermyson
    * Pong
    * Flappy bird
-4. Ana Cecília e Alexandre
-   * Campo minado
-   * Pong
-5. Victor e Amauri
+4. Victor
    * Labirinto
-   * Pong
-6. Matheus e Alisson
-   * Pacman
-   * Space invaders
-7. Abraão e Jonathan
+5. Abraão e Jonathan
    * Asteroids
    * Breakout
-8. Antônio e Rinaldo
-   * A DEFINIR
-9. James
+6. James e Dyego
    * Cronômetro
-   * Tenis
+   * Jogo educativo para cobrir as letras
