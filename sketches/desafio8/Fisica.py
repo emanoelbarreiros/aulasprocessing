@@ -6,7 +6,7 @@ class Fisica2D(object):
         self.paredes = []
         
     def adicionarParede(self,xInicio, yInicio, xFim, yFim):
-        self.parede.append(Parede(xInicio, yInicio, xFim, yFim))
+        self.paredes.append(Parede(xInicio, yInicio, xFim, yFim))
                         
     def adicionarObjeto(self, objeto):
         self.objetos.append(objeto)
