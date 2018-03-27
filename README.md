@@ -2,9 +2,11 @@
 
 este repositório guarda sketches Processing, utilizados na disciplina Programação I, do curso de Licenciatura em Computação da UPE, Campus Garanhuns.
 
-Guia de aulas: a ser definido.
+Guia de aulas: https://drive.google.com/open?id=1wY4VMSmJBROj43HU1wqDcjSdFTPW4G4u
 
 Todos os exercícios tem solução em Python e Java.
+
+
 
 # Exercícios
 
