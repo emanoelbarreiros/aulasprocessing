@@ -53,13 +53,26 @@ class Figura{
     return orientacao;
   }
   
+  public void decrementarPosicaoX(){
+    if(posicaoX>0){
+      posicaoX--;
+    }
+  }
+  
+  public void incrementarPosicaoX(){
+    if(posicaoX < jogo.qtdCelulasLargura - 1){
+      posicaoX++;
+    }
+  }
+      
+  
   public void moverBaixo(){
     posicaoY++;
     jogo.atualizarCelulas();
     if(jogo.checarColisao() || jogo.checarLimiteVertical()){
      posicaoY--; 
      bloquear();
-     converterBlocos();
+     //converterBlocos();
     }
     jogo.atualizarCelulas();
   }
@@ -70,17 +83,19 @@ class Figura{
   }
   
   public void moverEsquerda(){
-    posicaoX--;
-    if (jogo.checarLimitesLaterais()){
-      posicaoX++;
+    decrementarPosicaoX();
+    jogo.atualizarCelulas();
+    if (jogo.checarColisao()){
+      incrementarPosicaoX();
     }
     jogo.atualizarCelulas();
   }
   
   public void moverDireita(){
-    posicaoX++;
-    if (jogo.checarLimitesLaterais()){
-      posicaoX--;
+    incrementarPosicaoX();
+    jogo.atualizarCelulas();
+    if (jogo.checarLimitesLaterais() || jogo.checarColisao()){
+      decrementarPosicaoX();
     }
     jogo.atualizarCelulas();
   }
@@ -104,7 +119,7 @@ class Figura{
   void pintar(){
     //fill(cor);
     stroke(240);
-    for (int i = 0; i < formato.length; i++){
+    for (int i = 0; i < formato.length;i++){          
       for (int j = 0; j < formato[i].length; j++){
         if (formato[i][j] == 1){
           fill(cor);
@@ -115,7 +130,15 @@ class Figura{
   }
   
   public void rotacionar(){
-    orientacao = (byte)((orientacao + 1) % 4);
+    byte orientacaoAnterior = orientacao;
+    this.orientacao = (byte)((orientacao + 1) % 4);
+    this.formato = Definicao.obterMatrizFormato(forma, orientacao);
+    jogo.atualizarCelulas();
+    if(jogo.checarColisao() || jogo.checarLimitesLaterais()){
+      this.orientacao = orientacaoAnterior;
+      this.formato = Definicao.obterMatrizFormato(forma, orientacao);
+    }
+    jogo.atualizarCelulas();
   }
   
   public void deletar(int linha){

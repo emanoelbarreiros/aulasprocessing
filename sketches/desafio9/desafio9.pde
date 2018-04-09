@@ -25,6 +25,7 @@ public final color[] cores = {color(5, 255, 240),//ciano
 void setup(){
   size(500,600);
   background(200);
+  textSize(10);
   figuras = new ArrayList<Figura>();
   figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this);
   figuras.add(figuraLivre);
@@ -136,6 +137,8 @@ void checaLinhasCompletas(){
 }
 
 void keyPressed(){
+  println(UP);
+  println(keyCode);
   if(keyCode == LEFT){
     figuraLivre.moverEsquerda();
   }
