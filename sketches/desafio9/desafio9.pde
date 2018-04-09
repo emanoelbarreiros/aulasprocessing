@@ -15,7 +15,7 @@ byte modo = MODO_NORMAL;
 byte contFrames = 60;
 
 public final color[] cores = {color(5, 255, 240),//ciano
-                              color(43, 40, 250),//azul 
+                              color(43, 40, 250),//azul
                               color(250, 166, 40),//laranja
                               color(250,240,40),//amarelo
                               color(44, 198, 2),//verde
@@ -38,7 +38,7 @@ void draw(){
   } else if (modo == MODO_POSICIONAR){
     contFrames = 1;
   }
-  
+
   if(frameCount % contFrames == 0){
     //println(frameCount);
     if(!figuraLivre.getBloqueada()){
@@ -49,10 +49,10 @@ void draw(){
       figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this);
       figuras.add(figuraLivre);
     }
-    
+
     //pintar todas as figuras
     atualizarVisualizacao();
-  } 
+  }
 }
 
 void atualizarVisualizacao(){
@@ -70,7 +70,7 @@ void desenharFundo(){
   }
   for (int i = 1; i < qtdCelulasAltura; i++){
     line(0, i*tamanhoCelula, qtdCelulasLargura*tamanhoCelula, i*tamanhoCelula);
-  } 
+  }
 }
 
 void atualizarCelulas(){
@@ -100,11 +100,11 @@ public boolean checarColisao(){
 
 //retorna true se movimento levou a figura para fora dos limites da area de jogo
 public boolean checarLimitesLaterais(){
-  if((figuraLivre.getPosicaoX() + figuraLivre.qtdColunasForma()) > qtdCelulasLargura 
+  if((figuraLivre.getPosicaoX() + figuraLivre.qtdColunasForma()) > qtdCelulasLargura
       || figuraLivre.getPosicaoX() < 0){
     return true;
   }
-  
+
   return false;
 }
 
@@ -126,7 +126,7 @@ void checaLinhasCompletas(){
       linhas[i] = 1;
     }
   }
-  
+
   for(int i = linhas.length - 1; i >= 0; i--){
     if(linhas[i] == 1){
       for(Figura fig : figuras){
@@ -137,23 +137,21 @@ void checaLinhasCompletas(){
 }
 
 void keyPressed(){
-  println(UP);
-  println(keyCode);
   if(keyCode == LEFT){
     figuraLivre.moverEsquerda();
   }
-  
+
   if(keyCode == RIGHT){
     figuraLivre.moverDireita();
   }
-  
+
   if(keyCode == UP){
     figuraLivre.rotacionar();
   }
-  
+
   if(keyCode == DOWN){
     modo = MODO_POSICIONAR;
   }
-  
+
   atualizarVisualizacao();
 }
