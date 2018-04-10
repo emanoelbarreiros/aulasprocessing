@@ -1,39 +1,44 @@
 static class Definicao{
   public static final byte[][][] O = {{{1,1},{1,1}},
-                                      {{1,1},{1,1}},  
+                                      {{1,1},{1,1}},
                                       {{1,1},{1,1}},
                                       {{1,1},{1,1}}};
-  
+
   public static final byte[][][] I = {{{1},{1},{1},{1}},
-                                      {{1,1,1,1}},  
+                                      {{1,1,1,1}},
                                       {{1},{1},{1},{1}},
                                       {{1,1,1,1}}};
-  
+
   public static final byte[][][] J = {{{0,1},{0,1},{1,1}},
-                                      {{1,0,0},{1,1,1}},  
+                                      {{1,0,0},{1,1,1}},
                                       {{1,1},{1,0},{1,0}},
                                       {{1,1,1},{0,0,1}}};
 
   public static final byte[][][] L = {{{1,0},{1,0},{1,1}},
-                                      {{1,1,1},{1,0,0}},  
+                                      {{1,1,1},{1,0,0}},
                                       {{1,1},{0,1},{0,1}},
                                       {{0,0,1},{1,1,1}}};
-  
+
   public static final byte[][][] S = {{{1,0},{1,1},{0,1}},
-                                      {{0,1,1},{1,1,0}},  
+                                      {{0,1,1},{1,1,0}},
                                       {{1,0},{1,1},{0,1}},
                                       {{0,1,1},{1,1,0}}};
-                                      
+
   public static final byte[][][] Z = {{{0,1},{1,1},{1,0}},
-                                      {{1,1,0},{0,1,1}},  
+                                      {{1,1,0},{0,1,1}},
                                       {{0,1},{1,1},{1,0}},
                                       {{1,1,0},{0,1,1}}};
-                                      
+
   public static final byte[][][] T = {{{0,1,0},{1,1,1}},
-                                      {{1,0},{1,1},{1,0}},  
+                                      {{1,0},{1,1},{1,0}},
                                       {{1,1,1},{0,1,0}},
                                       {{0,1},{1,1},{0,1}}};
-                                      
+
+  public static final byte[][][] B = {{{1}},
+                                      {{1}},
+                                      {{1}},
+                                      {{1}}};
+
   public static final byte FORMA_O = 0;
   public static final byte FORMA_I = 1;
   public static final byte FORMA_J = 2;
@@ -41,7 +46,7 @@ static class Definicao{
   public static final byte FORMA_S = 4;
   public static final byte FORMA_Z = 5;
   public static final byte FORMA_T = 6;
-  
+
   /*
   public static final byte ORIENTACAO_N = 0;
   public static final byte ORIENTACAO_S = 1;
@@ -52,9 +57,9 @@ static class Definicao{
   public static final byte ORIENTACAO_L = 1;
   public static final byte ORIENTACAO_S = 2;
   public static final byte ORIENTACAO_O = 3;
-  
-  
-  
+
+
+
   public static byte[][] obterMatrizFormato(byte forma, byte orientacao){
     switch(forma){
       case FORMA_O:

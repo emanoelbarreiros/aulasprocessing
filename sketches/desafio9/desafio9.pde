@@ -40,7 +40,6 @@ void draw(){
   }
 
   if(frameCount % contFrames == 0){
-    //println(frameCount);
     if(!figuraLivre.getBloqueada()){
       figuraLivre.moverBaixo();
     } else {
@@ -59,7 +58,7 @@ void atualizarVisualizacao(){
   desenharFundo();
   for(Figura fig : figuras){
     fig.pintar();
-  } //<>//
+  }
 }
 
 void desenharFundo(){
