@@ -46,6 +46,7 @@ static class Definicao{
   public static final byte FORMA_S = 4;
   public static final byte FORMA_Z = 5;
   public static final byte FORMA_T = 6;
+  public static final byte FORMA_B = 7;
 
   /*
   public static final byte ORIENTACAO_N = 0;
@@ -58,7 +59,11 @@ static class Definicao{
   public static final byte ORIENTACAO_S = 2;
   public static final byte ORIENTACAO_O = 3;
 
+  private static int id = 0;
 
+  public static int obterId(){
+    return id++;
+  }
 
   public static byte[][] obterMatrizFormato(byte forma, byte orientacao){
     switch(forma){
@@ -76,6 +81,8 @@ static class Definicao{
         return Z[orientacao];
       case FORMA_T:
         return T[orientacao];
+      case FORMA_B:
+        return B[orientacao];
       default:
         return null;
     }

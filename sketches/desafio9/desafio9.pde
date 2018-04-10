@@ -1,6 +1,8 @@
 import java.util.Arrays;
 
 ArrayList<Figura> figuras;
+ArrayList<Figura> paraRemover;
+int[] linhasRemover;
 int qtdCelulasLargura = 10;
 int qtdCelulasAltura = 20;
 byte[][] celulas = new byte[qtdCelulasAltura][qtdCelulasLargura];//tamanho da janela
@@ -10,9 +12,11 @@ Figura figuraLivre;
 final byte MODO_NORMAL = 0;
 final byte MODO_POSICIONAR = 1;
 final byte MODO_DERROTA = 2;
+final byte MODO_REMOVER = 3;
 
 byte modo = MODO_NORMAL;
 byte contFrames = 60;
+byte frameRemover = 0;
 
 public final color[] cores = {color(5, 255, 240),//ciano
                               color(43, 40, 250),//azul
@@ -27,7 +31,7 @@ void setup(){
   background(200);
   textSize(10);
   figuras = new ArrayList<Figura>();
-  figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this);
+  figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
   figuras.add(figuraLivre);
   atualizarCelulas();
 }
@@ -37,20 +41,55 @@ void draw(){
     contFrames = 60;
   } else if (modo == MODO_POSICIONAR){
     contFrames = 1;
+  } else if (modo == MODO_REMOVER){
+    contFrames = 10;
   }
 
   if(frameCount % contFrames == 0){
-    if(!figuraLivre.getBloqueada()){
-      figuraLivre.moverBaixo();
+    if (modo == MODO_REMOVER){
+      if (frameRemover < 6){
+        for (Figura fig : paraRemover){
+          if(frameRemover % 2 == 0){
+            fig.realcar(true);
+          } else {
+            fig.realcar(false);
+          }
+        }
+        frameRemover++;
+      } else {
+        for (Figura f : paraRemover){
+          figuras.remove(f);
+        }
+        atualizarLinhasRemovidas();
+        frameRemover = 0;
+        modo = MODO_NORMAL;
+      }
     } else {
-      modo = MODO_NORMAL;
-      checaLinhasCompletas();
-      figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this);
-      figuras.add(figuraLivre);
+      if(!figuraLivre.getBloqueada()){
+        figuraLivre.moverBaixo();
+      } else {
+        modo = MODO_NORMAL;
+        checaLinhasCompletas();
+        if (paraRemover.isEmpty()){
+          figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
+          figuras.add(figuraLivre);
+        }
+      }
     }
+  }
+  //pintar todas as figuras
+  atualizarVisualizacao();
+}
 
-    //pintar todas as figuras
-    atualizarVisualizacao();
+void atualizarLinhasRemovidas(){
+  for (int i = 0; i < linhasRemover.length; i++){
+    if (linhasRemover[i] == 1){
+      for(Figura fig : figuras){
+        if(fig.getPosicaoY() < i){
+          fig.moverBaixo(1);
+        }
+      }
+    }
   }
 }
 
@@ -119,20 +158,37 @@ color escolherCor(){
 }
 
 void checaLinhasCompletas(){
-  int[] linhas = new int[20];
+  linhasRemover = new int[20];
   for(int i = 0; i < celulas.length; i++){
     if(Arrays.equals(celulas[i], new byte[]{1,1,1,1,1,1,1,1,1,1})){
-      linhas[i] = 1;
+      linhasRemover[i] = 1;
     }
   }
 
-  for(int i = linhas.length - 1; i >= 0; i--){
-    if(linhas[i] == 1){
+  paraRemover = new ArrayList<Figura>();
+  for(int i = 0; i < linhasRemover.length; i++){
+    if(linhasRemover[i] == 1){
       for(Figura fig : figuras){
-        fig.deletar(i);
+        if (fig.getPosicaoY() == i){
+          paraRemover.add(fig);
+        }
       }
     }
   }
+
+  modo = MODO_REMOVER;
+}
+
+void adicionarFigura(Figura f){
+  figuras.add(f);
+  //print("adicionar");
+  //printArray(figuras.toArray());
+}
+
+void removerFigura(Figura f) {
+  figuras.remove(f);
+  //print("remover");
+  //printArray(figuras.toArray());
 }
 
 void keyPressed(){
