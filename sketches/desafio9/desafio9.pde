@@ -181,14 +181,10 @@ void checaLinhasCompletas(){
 
 void adicionarFigura(Figura f){
   figuras.add(f);
-  //print("adicionar");
-  //printArray(figuras.toArray());
 }
 
 void removerFigura(Figura f) {
   figuras.remove(f);
-  //print("remover");
-  //printArray(figuras.toArray());
 }
 
 void keyPressed(){
