@@ -32,10 +32,10 @@ class Figura{
       this.bloqueada = false;
     }
     this.formato = Definicao.obterMatrizFormato(forma, orientacao);
-    this.cor = cor;
     this.tamanhoParte = tamanhoParte;
     this.jogo = jogo;
     this.realcar = false;
+    this.cor = cor;
   }
 
   public int getPosicaoX(){
@@ -139,6 +139,8 @@ class Figura{
   }
 
   void pintar(){
+    pintar(posicaoX*tamanhoParte, posicaoY*tamanhoParte);
+    /*
     stroke(240);
     for (int i = 0; i < formato.length;i++){
       for (int j = 0; j < formato[i].length; j++){
@@ -149,8 +151,25 @@ class Figura{
             fill(red(cor), green(cor), blue(cor),150);
           }
           rect((posicaoX+j)*tamanhoParte, (posicaoY+i)*tamanhoParte, tamanhoParte, tamanhoParte);
-          fill(0);
-          text(""+id, (posicaoX+j)*tamanhoParte + tamanhoParte/2, (posicaoY+i)*tamanhoParte + tamanhoParte/2);
+          //fill(0);
+          //text(""+id, (posicaoX+j)*tamanhoParte + tamanhoParte/2, (posicaoY+i)*tamanhoParte + tamanhoParte/2);
+        }
+      }
+    }
+    */
+  }
+  
+  void pintar(int x, int y){
+    stroke(240);
+    for (int i = 0; i < formato.length;i++){
+      for (int j = 0; j < formato[i].length; j++){
+        if (formato[i][j] == 1){
+          if (realcar){
+            fill(cor);
+          } else {
+            fill(red(cor), green(cor), blue(cor),150);
+          }
+          rect(x + (tamanhoParte*j), y + (tamanhoParte*i), tamanhoParte, tamanhoParte);
         }
       }
     }

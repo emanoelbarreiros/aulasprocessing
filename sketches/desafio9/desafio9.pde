@@ -8,11 +8,13 @@ int qtdCelulasAltura = 20;
 byte[][] celulas = new byte[qtdCelulasAltura][qtdCelulasLargura];//tamanho da janela
 int tamanhoCelula = 30;
 Figura figuraLivre;
+Figura proximaFigura;
 
 final byte MODO_NORMAL = 0;
 final byte MODO_POSICIONAR = 1;
 final byte MODO_DERROTA = 2;
 final byte MODO_REMOVER = 3;
+final byte MODO_GAME_OVER = 4;
 
 byte modo = MODO_NORMAL;
 byte contFrames = 60;
@@ -32,8 +34,10 @@ void setup(){
   textSize(10);
   figuras = new ArrayList<Figura>();
   figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
+  proximaFigura = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
   figuras.add(figuraLivre);
   atualizarCelulas();
+  textSize(25);
 }
 
 void draw(){
@@ -43,11 +47,15 @@ void draw(){
     contFrames = 1;
   } else if (modo == MODO_REMOVER){
     contFrames = 10;
+  } 
+  
+  if(checaGameOver()){
+    modo = MODO_GAME_OVER;
   }
 
-  if(frameCount % contFrames == 0){
+  if(frameCount % contFrames == 0 && modo != MODO_GAME_OVER){
     if (modo == MODO_REMOVER){
-      if (frameRemover < 6){
+      if (frameRemover < 6){//realçar linhas a serem removidas
         for (Figura fig : paraRemover){
           if(frameRemover % 2 == 0){
             fig.realcar(true);
@@ -56,7 +64,7 @@ void draw(){
           }
         }
         frameRemover++;
-      } else {
+      } else {//remover linhas completas após a realce
         for (Figura f : paraRemover){
           figuras.remove(f);
         }
@@ -71,7 +79,8 @@ void draw(){
         modo = MODO_NORMAL;
         checaLinhasCompletas();
         if (paraRemover.isEmpty()){
-          figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
+          figuraLivre = proximaFigura;
+          proximaFigura = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
           figuras.add(figuraLivre);
         }
       }
@@ -98,6 +107,16 @@ void atualizarVisualizacao(){
   for(Figura fig : figuras){
     fig.pintar();
   }
+  
+  pintarProximaFigura();
+}
+
+void pintarProximaFigura(){
+  int padding = qtdCelulasLargura*tamanhoCelula;
+  int centro = padding + (width - padding)/2;
+  proximaFigura.pintar(centro - proximaFigura.qtdColunasForma()*tamanhoCelula/2, 50);
+  fill(0);
+  text("Próxima", 350, 30);
 }
 
 void desenharFundo(){
@@ -153,8 +172,14 @@ public boolean checarLimiteVertical(){
   return false;
 }
 
-color escolherCor(){
-  return cores[figuras.size() % cores.length];
+boolean checaGameOver(){
+  for (Figura f : figuras){
+    if(f.getBloqueada() && f.getPosicaoY() == 0){
+      return true;
+    }
+  }
+  
+  return false;
 }
 
 void checaLinhasCompletas(){
@@ -185,6 +210,10 @@ void adicionarFigura(Figura f){
 
 void removerFigura(Figura f) {
   figuras.remove(f);
+}
+
+color escolherCor(){
+  return cores[floor(random(cores.length))];
 }
 
 void keyPressed(){
