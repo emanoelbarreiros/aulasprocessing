@@ -9,6 +9,7 @@ byte[][] celulas = new byte[qtdCelulasAltura][qtdCelulasLargura];//tamanho da ja
 int tamanhoCelula = 30;
 Figura figuraLivre;
 Figura proximaFigura;
+int linhasRemovidas = 0;
 
 final byte MODO_NORMAL = 0;
 final byte MODO_POSICIONAR = 1;
@@ -37,7 +38,6 @@ void setup(){
   proximaFigura = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
   figuras.add(figuraLivre);
   atualizarCelulas();
-  textSize(25);
 }
 
 void draw(){
@@ -109,6 +109,7 @@ void atualizarVisualizacao(){
   }
   
   pintarProximaFigura();
+  pintarLinhasRemovidas();
 }
 
 void pintarProximaFigura(){
@@ -116,7 +117,19 @@ void pintarProximaFigura(){
   int centro = padding + (width - padding)/2;
   proximaFigura.pintar(centro - proximaFigura.qtdColunasForma()*tamanhoCelula/2, 50);
   fill(0);
-  text("Próxima", 350, 30);
+  textSize(20);
+  text("Próxima", 360, 30);
+}
+
+void pintarLinhasRemovidas(){
+  fill(0);
+  textSize(20);
+  text("Linhas", 370, 250);
+  
+  textSize(50);
+  int padding = qtdCelulasLargura*tamanhoCelula;
+  int centro = padding + (width - padding)/2;
+  text(linhasRemovidas, centro - textWidth("" + linhasRemovidas)/2, 330);
 }
 
 void desenharFundo(){
@@ -187,6 +200,7 @@ void checaLinhasCompletas(){
   for(int i = 0; i < celulas.length; i++){
     if(Arrays.equals(celulas[i], new byte[]{1,1,1,1,1,1,1,1,1,1})){
       linhasRemover[i] = 1;
+      linhasRemovidas++;
     }
   }
 
