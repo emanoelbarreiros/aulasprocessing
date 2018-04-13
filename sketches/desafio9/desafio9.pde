@@ -72,9 +72,12 @@ void draw(){
         frameRemover = 0;
         modo = MODO_NORMAL;
       }
-    } else {
+    } else {      
       if(!figuraLivre.getBloqueada()){
         figuraLivre.moverBaixo();
+        if(modo == MODO_SOFT){
+          score += 1;
+        }
       } else {
         modo = MODO_NORMAL;
         checaLinhasCompletas();
@@ -110,6 +113,18 @@ void atualizarVisualizacao(){
   
   pintarProximaFigura();
   pintarLinhasRemovidas();
+  pintarPontuacao();
+}
+
+void pintarPontuacao(){
+  fill(0);
+  textSize(20);
+  text("Score", 375, 420);
+  
+  textSize(50);
+  int padding = qtdCelulasLargura*tamanhoCelula;
+  int centro = padding + (width - padding)/2;
+  text(""+score, centro - textWidth("" + score)/2, 500);
 }
 
 void pintarProximaFigura(){
@@ -124,12 +139,12 @@ void pintarProximaFigura(){
 void pintarLinhasRemovidas(){
   fill(0);
   textSize(20);
-  text("Linhas", 370, 250);
+  text("Linhas", 370, 240);
   
   textSize(50);
   int padding = qtdCelulasLargura*tamanhoCelula;
   int centro = padding + (width - padding)/2;
-  text(linhasRemovidas, centro - textWidth("" + linhasRemovidas)/2, 330);
+  text(linhasRemovidas, centro - textWidth("" + linhasRemovidas)/2, 320);
 }
 
 void desenharFundo(){
@@ -218,6 +233,25 @@ void checaLinhasCompletas(){
   }
 
   modo = MODO_REMOVER;
+  atualizarScore(linhasRemovidasJogada);
+  println(linhasRemovidasJogada);
+}
+
+void atualizarScore(int linhasRemovidas){
+  if (linhasRemovidas == 1){
+    score += nivel*100;
+  } else if (linhasRemovidas == 2){
+    score += nivel*300;
+  } else if (linhasRemovidas == 3){
+    score += nivel*500;
+  } else if (linhasRemovidas == 4){
+    score += nivel*800;
+  } else {
+    if(hardDrop){
+      score += altura*2;
+    }
+  }
+  
 }
 
 void adicionarFigura(Figura f){
