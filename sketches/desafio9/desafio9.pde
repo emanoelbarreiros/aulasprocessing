@@ -10,44 +10,44 @@ int tamanhoCelula = 30;
 Figura figuraLivre;
 Figura proximaFigura;
 int linhasRemovidas = 0;
+boolean hardDrop = false;
+int altura = 0;
+long score = 0;
+int nivel = 1;
 
 final byte MODO_NORMAL = 0;
-final byte MODO_POSICIONAR = 1;
+final byte MODO_HARD = 1;
 final byte MODO_DERROTA = 2;
 final byte MODO_REMOVER = 3;
 final byte MODO_GAME_OVER = 4;
+final byte MODO_SOFT = 5;
 
 byte modo = MODO_NORMAL;
 byte contFrames = 60;
 byte frameRemover = 0;
 
-public final color[] cores = {color(5, 255, 240),//ciano
-                              color(43, 40, 250),//azul
-                              color(250, 166, 40),//laranja
-                              color(250,240,40),//amarelo
-                              color(44, 198, 2),//verde
-                              color(107, 12, 242),//roxo
-                              color(247, 27, 27)};//vermelho
 
 void setup(){
   size(500,600);
   background(200);
   textSize(10);
   figuras = new ArrayList<Figura>();
-  figuraLivre = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
-  proximaFigura = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
+  figuraLivre = new Figura(4,0, tamanhoCelula, this, false);
+  proximaFigura = new Figura(4,0, tamanhoCelula, this, false);
   figuras.add(figuraLivre);
   atualizarCelulas();
 }
 
 void draw(){
   if (modo == MODO_NORMAL){
-    contFrames = 60;
-  } else if (modo == MODO_POSICIONAR){
+    contFrames = byte(60 - (nivel - 1)*5);
+  } else if (modo == MODO_HARD){
     contFrames = 1;
   } else if (modo == MODO_REMOVER){
     contFrames = 10;
-  } 
+  } else if (modo == MODO_SOFT){
+    contFrames = 5;
+  }
   
   if(checaGameOver()){
     modo = MODO_GAME_OVER;
@@ -80,7 +80,7 @@ void draw(){
         checaLinhasCompletas();
         if (paraRemover.isEmpty()){
           figuraLivre = proximaFigura;
-          proximaFigura = new Figura(4,0, escolherCor(), tamanhoCelula, this, false);
+          proximaFigura = new Figura(4,0, tamanhoCelula, this, false);
           figuras.add(figuraLivre);
         }
       }
@@ -197,10 +197,12 @@ boolean checaGameOver(){
 
 void checaLinhasCompletas(){
   linhasRemover = new int[20];
+  int linhasRemovidasJogada = 0;
   for(int i = 0; i < celulas.length; i++){
     if(Arrays.equals(celulas[i], new byte[]{1,1,1,1,1,1,1,1,1,1})){
       linhasRemover[i] = 1;
       linhasRemovidas++;
+      linhasRemovidasJogada++;
     }
   }
 
@@ -226,10 +228,6 @@ void removerFigura(Figura f) {
   figuras.remove(f);
 }
 
-color escolherCor(){
-  return cores[floor(random(cores.length))];
-}
-
 void keyPressed(){
   if(keyCode == LEFT){
     figuraLivre.moverEsquerda();
@@ -242,9 +240,26 @@ void keyPressed(){
   if(keyCode == UP){
     figuraLivre.rotacionar();
   }
-
+  
   if(keyCode == DOWN){
-    modo = MODO_POSICIONAR;
+    modo = MODO_SOFT;
+    hardDrop = false;
+    altura = qtdCelulasAltura - figuraLivre.getPosicaoX() - figuraLivre.qtdLinhasForma();
+  }
+
+  if(keyCode == 32){//tecla espaco
+    modo = MODO_HARD;
+    hardDrop = true;
+    altura = qtdCelulasAltura - figuraLivre.getPosicaoX() - figuraLivre.qtdLinhasForma(); 
+  }
+
+  atualizarVisualizacao();
+}
+
+void keyReleased(){
+  if(keyCode == DOWN){
+    modo = MODO_NORMAL;
+    hardDrop = false;
   }
 
   atualizarVisualizacao();

@@ -19,7 +19,7 @@ class Figura{
 
   private boolean realcar;
 
-  public Figura(int posX, int posY, color cor, int tamanhoParte, desafio9 jogo, boolean bloco){
+  public Figura(int posX, int posY, int tamanhoParte, desafio9 jogo, boolean bloco){
     this.id = Definicao.obterId();
     this.posicaoX = posX;
     this.posicaoY = posY;
@@ -35,7 +35,7 @@ class Figura{
     this.tamanhoParte = tamanhoParte;
     this.jogo = jogo;
     this.realcar = false;
-    this.cor = cor;
+    this.cor = obterCor(forma);
   }
 
   public int getPosicaoX(){
@@ -68,6 +68,14 @@ class Figura{
 
   public int getId(){
     return id;
+  }
+  
+  public void setCor(color cor){
+    this.cor = cor;
+  }
+  
+  public color getCor(){
+    return this.cor;
   }
 
   public void decrementarPosicaoX(){
@@ -140,23 +148,6 @@ class Figura{
 
   void pintar(){
     pintar(posicaoX*tamanhoParte, posicaoY*tamanhoParte);
-    /*
-    stroke(240);
-    for (int i = 0; i < formato.length;i++){
-      for (int j = 0; j < formato[i].length; j++){
-        if (formato[i][j] == 1){
-          if (realcar){
-            fill(cor);
-          } else {
-            fill(red(cor), green(cor), blue(cor),150);
-          }
-          rect((posicaoX+j)*tamanhoParte, (posicaoY+i)*tamanhoParte, tamanhoParte, tamanhoParte);
-          //fill(0);
-          //text(""+id, (posicaoX+j)*tamanhoParte + tamanhoParte/2, (posicaoY+i)*tamanhoParte + tamanhoParte/2);
-        }
-      }
-    }
-    */
   }
   
   void pintar(int x, int y){
@@ -191,13 +182,35 @@ class Figura{
     for (int i = 0; i < formato.length; i++) {
       for (int j = 0; j < formato[i].length; j++) {
         if (formato[i][j] == 1){
-          Figura f = new Figura(posicaoX+j, posicaoY+i, cor, tamanhoParte, jogo, true);
+          Figura f = new Figura(posicaoX+j, posicaoY+i, tamanhoParte, jogo, true);
+          f.setCor(this.cor);
           jogo.adicionarFigura(f);
         }
       }
     }
     jogo.removerFigura(this);//garantir que ao remover esta figura, as celulas sejam atualizadas corretamente
     jogo.atualizarCelulas();
+  }
+  
+  public color obterCor(byte forma){
+    switch(forma){
+      case Definicao.FORMA_O:
+        return color(250,240,40);
+      case Definicao.FORMA_I:
+        return color(5, 255, 240);
+      case Definicao.FORMA_J:
+        return color(43, 40, 250);
+      case Definicao.FORMA_L:
+        return color(250, 166, 40);
+      case Definicao.FORMA_S:
+        return color(44, 198, 2);
+      case Definicao.FORMA_Z:
+        return color(247, 27, 27);
+      case Definicao.FORMA_T:
+        return color(107, 12, 242);
+      default:
+        return color(0);
+    }
   }
 
   public boolean equals(Figura outra) {

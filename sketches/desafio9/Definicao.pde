@@ -1,4 +1,9 @@
 static class Definicao{
+  //para todas as figuras:
+  // [0] -> orientacao norte
+  // [1] -> orientacao leste
+  // [2] -> orientação sul
+  // [3] -> orientação oeste
   public static final byte[][][] O = {{{1,1},{1,1}},
                                       {{1,1},{1,1}},
                                       {{1,1},{1,1}},
@@ -47,13 +52,7 @@ static class Definicao{
   public static final byte FORMA_Z = 5;
   public static final byte FORMA_T = 6;
   public static final byte FORMA_B = 7;
-
-  /*
-  public static final byte ORIENTACAO_N = 0;
-  public static final byte ORIENTACAO_S = 1;
-  public static final byte ORIENTACAO_L = 2;
-  public static final byte ORIENTACAO_O = 3;
-  */
+  
   public static final byte ORIENTACAO_N = 0;
   public static final byte ORIENTACAO_L = 1;
   public static final byte ORIENTACAO_S = 2;
