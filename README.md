@@ -8,7 +8,7 @@ Todos os exercícios tem solução em Python e Java.
 
 
 
-# Exercícios
+# Exercícios Parte 1
 
 1.	Escreva um programa que desenha um quadrado onde quer que o mouse esteja na tela, centralizado na posição do mouse. O quadrado deve deixar um rastro na tela quando você mover o mouse. [Código do exercício 1](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/exercicio1 "clique :)")
 2.	Altere o código da questão 1 para que ao mover o quadrado, ele não deixe um rastro na tela. [Código do exercício 2](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/exercicio2 "clique :)")
@@ -19,14 +19,22 @@ Todos os exercícios tem solução em Python e Java.
 7.	Faça uma animação do PacMan usando a função arc. Como o PacMan se move é uma decisão sua. [Código do exercício 7](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/exercicio7 "clique :)")
 8.	Use a função arc para criar um gráfico de pizza dividido em 3 pedaços: um pedaço com 50% da pizza, outro pedaço com 20% da pizza e um terceiro pedaço com os 30% restantes da pizza. Cada pedaço deve ter cores diferentes. [Código do exercício 8](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/exercicio8 "clique :)")
 9.	Escreva um programa que realize desenhos simétricos usando elipses. A cada frame, desenhe uma elipse na posição do mouse e a espelhe verticalmente na metade direita da tela. As elipses só devem ser desenhadas quando o mouse for pressionado. [Código do exercício 9](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/exercicio9 "clique :)")
+
+# Exercícios Parte 2
+
 10. Escreva um programa que simule uma bola caindo e quicando na borda inferior da janela. A bola deve quicar e perder um pouco da energia, de forma que após algumas quicadas, ela para na parte de baixo da tela. OBS: A bola deve iniciar a queda a partir do clique do mouse. Inicie implementando um sistema onde a bola é perfeitamente elástica, ou seja, toda a energia antes do impacto se mantém, mas sua velocidade é invertida após o impacto. Depois disso, implemente um sistema onde após cada impacto a bola perde uma porcentagem da sua energia. Faça a bola cair sempre do ponto mais alto possível da tela.
-11. Baseado no código do exercício 10, incremente-o para permitir que (i) ao clicar com o mouse, surja na tela uma bola na posição do mouse e (ii) seja permitido que várias bolas existam ao mesmo tempo com velocidades independentes (não é necessário considerar a colisão entre as bolas). Se você estiver estudando Python, pesquise sobre listas ([comece por aqui](http://turing.com.br/pydoc/2.7/tutorial/datastructures.html "clique :)")) e tente descobrir como você pode utilizar este conceito no seu programa. Se estiver usando Java, procure usar arrays ([comece por aqui](https://www.caelum.com.br/apostila-java-orientacao-objetos/um-pouco-de-arrays/ "clique :)")) 
-12. Faça um programa que, ao ser executado, crie um círculo em um lugar aleatório da tela e atribua a este círculo uma velocidade também aleatória (aleatória em termos de direção, sentido e intensidade). Tanto no eixo X quanto no eixo Y, a velocidade não deve ser inferior a -5 nem maior que 5. Ao colidir com as bordas, ela deve ser refletida com o mesmo ângulo, como em uma mesa de sinuca. A bola deve continuar se movimentando com velocidade constante enquanto o programa estiver em funcionamento.
-13. Baseado no programa do exercício 12, faça com que um novo círculo seja criado a cada clique do mouse. Os círculos devem se mover indefinidamente.
+apostila-java-orientacao-objetos/um-pouco-de-arrays/ "clique :)")) 
+11. Faça um programa que, ao ser executado, crie um círculo em um lugar aleatório da tela e atribua a este círculo uma velocidade também aleatória (aleatória em termos de direção, sentido e intensidade). Tanto no eixo X quanto no eixo Y, a velocidade não deve ser inferior a -5 nem maior que 5. Ao colidir com as bordas, ela deve ser refletida com o mesmo ângulo, como em uma mesa de sinuca. A bola deve continuar se movimentando com velocidade constante enquanto o programa estiver em funcionamento.
+
+
+# Exercícios Parte 3
+
+12. Baseado no código do exercício 10, incremente-o para permitir que (i) ao clicar com o mouse, surja na tela uma bola na posição do mouse e (ii) seja permitido que várias bolas existam ao mesmo tempo com velocidades independentes (não é necessário considerar a colisão entre as bolas). Se você estiver estudando Python, pesquise sobre listas ([comece por aqui](http://turing.com.br/pydoc/2.7/tutorial/datastructures.html "clique :)")) e tente descobrir como você pode utilizar este conceito no seu programa. Se estiver usando Java, procure usar arrays ([comece por aqui](https://www.caelum.com.br/
+13. Baseado no programa do exercício 11, faça com que um novo círculo seja criado a cada clique do mouse. Os círculos devem se mover indefinidamente.
 14. Faça um programa que desenhe círculos na tela a cada clique do mouse, mas quando você clicar dentro de um círculo já existente, ele deve ser removido da tela.
 15. Faça um programa que simule pingos caindo do topo da janela. Faça com que os pingos sejam adicionados em uma posição aleatória no topo da tela a cada 5 frames. Ao chegar no limite inferior da janela, reposicione aquele pingo no topo da tela, na mesma posicao X. Não perca nenhum pingo, a chuva com o tempo vai ficando cada vez mais "grossa". Inicialmente faça com que os pingos tenham velocidade constante, mas depois adicione o conceito de aceleração de forma a simular a gravidade.
-16. Implemente um programa que, ao clicar na tela, ele desenhe um ponto na tela. Após adicionar os pontos que desejar, quando o usuario pressionar uma tecla do teclado (qualquer uma, você escolhe), ele ligue todos os pontos e crie um polígono fechado.
-17. Baseado no exercício 12, implemente um programa que a cada 2 segundos (frameCount % 120 == 0) crie um pequeno círculo em um lugar aleatório da tela, simulando um alimento. Quando o círculo maiore (que nesse exercício consideramos como um indivíduo) se chocar com o alimento (nesse momento o alimento é removido). O indivíduo deve aumentar de raio quando encontrar alimento.
+16. Implemente um programa que, ao clicar na tela, ele desenhe um ponto onde o mouse foi clicado. Após adicionar os pontos que desejar, quando o usuario pressionar uma tecla do teclado (qualquer uma, você escolhe), ele ligue todos os pontos e crie um polígono fechado.
+17. Baseado nos exercícios 11 e 13, implemente um programa que a cada 2 segundos (frameCount % 120 == 0) crie um pequeno círculo em um lugar aleatório da tela, simulando um alimento. Quando o círculo maiore (que nesse exercício consideramos como um indivíduo) se chocar com o alimento (nesse momento o alimento é removido). O indivíduo deve aumentar de raio quando encontrar alimento.
 18. Baseado no exercício 17, incremente o programa para que os indivíduos se desloquem em direção ao alimento mais próximo. Quando não houver alimento disponível o indivíduo fica parado esperando.
 
 # Desafios
