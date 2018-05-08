@@ -36,6 +36,7 @@ apostila-java-orientacao-objetos/um-pouco-de-arrays/ "clique :)"))
 16. Implemente um programa que, ao clicar na tela, ele desenhe um ponto onde o mouse foi clicado. Após adicionar os pontos que desejar, quando o usuario pressionar uma tecla do teclado (qualquer uma, você escolhe), ele ligue todos os pontos e crie um polígono fechado.
 17. Baseado nos exercícios 11 e 13, implemente um programa que a cada 2 segundos (frameCount % 120 == 0) crie um pequeno círculo em um lugar aleatório da tela, simulando um alimento. Quando o círculo maiore (que nesse exercício consideramos como um indivíduo) se chocar com o alimento (nesse momento o alimento é removido). O indivíduo deve aumentar de raio quando encontrar alimento.
 18. Baseado no exercício 17, incremente o programa para que os indivíduos se desloquem em direção ao alimento mais próximo. Quando não houver alimento disponível o indivíduo fica parado esperando.
+19. Implemente uma simples simulação de um sistema solar, onde você tem uma estrela no centro da tela, e alguns planetas girando em torno dela. Permita que o usuário adicione novos planetas ao sistema utilizando o mouse: o usuário clica para determinar onde o planeta deve ser criado, e arrasta o mouse com o botão clicado para definir a velocidade inicial do planeta.
 
 # Desafios
 1. Faça com que o pacman do Exercício 7 oriente-se em relação ao mouse (olhe para o mouse) e persiga o mouse como seu alvo de movimento. [Código do desafio 1](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio1 "clique :)")
@@ -51,22 +52,4 @@ apostila-java-orientacao-objetos/um-pouco-de-arrays/ "clique :)"))
 9. Implemente o jogo Tetris. Não olhe o código fonte antes de tentar fazer o seu. É um excelente exercício tentar descobrir sozinho como modelar uma solução para um problema. [Código fonte aqui](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio9)
 
 # Projetos
-Criar dois projetos usando o Processing.py, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 18/07/2017.
-
-1. Daniel Sales e José Neto
-   * Joguinho da nave, tipo Truxton
-   * Memória dos círculos
-2. Ananda e Hemerson
-   * Breakout
-   * Asteroids
-3. Douglas e Hermyson
-   * Pong
-   * Flappy bird
-4. Victor
-   * Labirinto
-5. Abraão e Jonathan
-   * Asteroids
-   * Breakout
-6. James e Dyego
-   * Cronômetro
-   * Jogo educativo para cobrir as letras
+Criar dois projetos usando o Processing, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 18/07/2017.
