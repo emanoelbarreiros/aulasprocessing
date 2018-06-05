@@ -52,4 +52,4 @@ apostila-java-orientacao-objetos/um-pouco-de-arrays/ "clique :)"))
 9. Implemente o jogo Tetris. Não olhe o código fonte antes de tentar fazer o seu. É um excelente exercício tentar descobrir sozinho como modelar uma solução para um problema. [Código fonte aqui](https://github.com/emanoelbarreiros/aulasprocessing/tree/master/sketches/desafio9)
 
 # Projetos
-Criar dois projetos usando o Processing, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 18/07/2017.
+Criar dois projetos usando o Processing, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 04/07/2018.

@@ -1,17 +1,12 @@
-int posicaoY = 0;
 int largura = 50;
-float velocidade = 0;
 float aceleracao = 0.3;
 float elasticidade = 0.7;
 
 float[] xBolas = new float[100];
-int iXBolas = 0;
 float[] yBolas = new float[100];
-int iYBolas = 0;
 float[] velBolas = new float[100];
-int iVelBolas = 0;
 float[] corBolas = new float[100];
-int iCorBolas = 0;
+int novaPosicao = 0;
 
 void setup(){
   size(600, 600);
@@ -20,7 +15,7 @@ void setup(){
 void draw(){
   background(120);
 
-  for (int i = 0; i < xBolas.length; i++){
+  for (int i = 0; i < novaPosicao; i++){
     velBolas[i] = velBolas[i] + aceleracao;
     yBolas[i] = yBolas[i] + velBolas[i];
     fill(corBolas[i]);
@@ -34,8 +29,9 @@ void draw(){
 }
 
 void mouseReleased(){
-  xBolas[iXBolas++] = mouseX;
-  yBolas[iYBolas++] = mouseY;
-  velBolas[iVelBolas++] = 0;
-  corBolas[iCorBolas++] = random(256);
+  xBolas[novaPosicao] = mouseX;
+  yBolas[novaPosicao] = mouseY;
+  velBolas[novaPosicao] = 0;
+  corBolas[novaPosicao] = random(256);
+  novaPosicao++;
 }
