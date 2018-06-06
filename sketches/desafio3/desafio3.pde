@@ -59,7 +59,7 @@ void setup() {
   tiro = new SoundFile(this, "tiro.mp3");
   morte = new SoundFile(this, "morte.mp3");
   tanque = new Tanque(width/2, height/2, larguraTanque, tamanhoBala, tiro, morte);
-  
+
   try {
     timer = new Timer(this, desafio3.class.getMethod("criarInimigo", new Class[]{}), 2);
     timer.iniciar();
@@ -95,7 +95,7 @@ void draw() {
     //remover balas que sairam da janela
     //balas = filter(filtrarBalasVisiveis, balas);
     balas = filtrarBalas();
-    
+
     //atualiza a posicao das balas
     for (int i = 0; i < balas.size(); i++) {
       balas.get(i).atualizar();
@@ -176,7 +176,7 @@ ArrayList<Inimigo> filtrarInimigos() {
       novos.add(inimigos.get(i));
     }
   }
-  
+
   return novos;
 }
 
