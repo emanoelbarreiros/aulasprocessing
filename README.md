@@ -57,25 +57,31 @@ Criar dois projetos usando o Processing, no mesmo nível dos desafios. Um dos pr
 # Duplas
 * Alisson Lima e Thiago Ferreira
   * Pacman
-  * Projeto 2
+  * Asteroids
 * Joel Pedro e Erica Michelle
   * Projeto 1
   * Projeto 2
 * José Matheus e Elyzabett Karolyna
   * Air hockey
-  * Projeto 2
+  * Tanque incrementado
 * Rielson e Andrileide
-  * Projeto 1
-  * Projeto 2
+  * Dodger
+  * Pong
 * Carlos André e Ricardo Berg
-  * Projeto 1
+  * Space invaders
   * Projeto 2
 * Beatriz Sobral e Bruno Lyra
   * Projeto 1
   * Projeto 2
 * Alisson Rodrigo
-  * Projeto 1
+  * Breakout
   * Projeto 2
 * Ana Cecília e Hemerson
-  * Projeto 1
+  * Arco e flecha
+  * Projeto 2
+* Miguel Melo e Daniel Ferreira
+  * Breakout
+  * Projeto 2
+* Paulo Sérgio e Layane Ferreira
+  * Labirinto
   * Projeto 2
