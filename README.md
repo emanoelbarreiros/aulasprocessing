@@ -53,35 +53,3 @@ apostila-java-orientacao-objetos/um-pouco-de-arrays/ "clique :)"))
 
 # Projetos
 Criar dois projetos usando o Processing, no mesmo nível dos desafios. Um dos projetos vai ser utilizado para uma média aritmética com a nota do 1o EE, e o segundo projeto vai ser a nota do 2o EE. Ambos os projetos devem ser apresentados pelas duplas no dia 03/07/2018.
-
-# Duplas
-* Alisson Lima e Thiago Ferreira
-  * Pacman
-  * Asteroids
-* Joel Pedro e Erica Michelle
-  * Projeto 1
-  * Projeto 2
-* José Matheus e Elyzabett Karolyna
-  * Air hockey
-  * Tanque incrementado
-* Rielson e Andrileide
-  * Dodger
-  * Pong
-* Carlos André e Ricardo Berg
-  * Space invaders
-  * Projeto 2
-* Beatriz Sobral e Bruno Lyra
-  * Projeto 1
-  * Projeto 2
-* Alisson Rodrigo
-  * Breakout
-  * Projeto 2
-* Ana Cecília e Hemerson
-  * Arco e flecha
-  * Projeto 2
-* Miguel Melo e Daniel Ferreira
-  * Breakout
-  * Projeto 2
-* Paulo Sérgio e Layane Ferreira
-  * Labirinto
-  * Projeto 2
