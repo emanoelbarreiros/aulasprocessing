@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-int largura = 40;
+int raio = 20;
 Grafo grafo;
 int vertices = 0;
 int MODO_VERTICE = 0;
@@ -13,6 +13,7 @@ Vertice verticeOrigem = null;
 Vertice verticeDestino = null;
 Thread algoritmo = null;
 boolean rodando = false;
+boolean verticeSelecionado = false;
 
 void setup(){
   size(600, 400);
@@ -42,7 +43,7 @@ void draw() {
     } else {
       strokeWeight(1);
     }
-    ellipse(v.getX(), v.getY(), largura, largura);
+    ellipse(v.getX(), v.getY(), 2*raio, 2*raio);
     textSize(18);
     fill(corTexto);
     //pinta texto dentro do vertice
@@ -57,9 +58,9 @@ void draw() {
     } else {
       descoberta = "" + v.getDescoberta();
     }
-    text(descoberta, v.getX() - 5, v.getY() - largura/2 - 5);
+    text(descoberta, v.getX() - 5, v.getY() - raio - 5);
     //pinta tempo de finalizacao
-    text(v.getFinalizacao(), v.getX() - 5, v.getY() + largura/2 + 15);
+    text(v.getFinalizacao(), v.getX() - 5, v.getY() + raio + 15);
     
     //pinta predecessor
     String predecessor = null;
@@ -98,8 +99,8 @@ void seta(int x1, int y1, int x2, int y2) {
   PVector direcao = p2.sub(new PVector(x1, y1));
   translate(x1, y1);
   rotate(direcao.heading());
-  line(largura/2, 0, distancia - largura/2, 0);
-  translate(distancia - largura/2, 0);
+  line(raio, 0, distancia - raio, 0);
+  translate(distancia - raio, 0);
   line(-8, -8, 0, 0);
   line(-8, 8, 0, 0);
   popMatrix();
@@ -119,17 +120,40 @@ void setaCurva(int x1, int y1, int x2, int y2) {
 
 
 void mouseReleased(){
+  if (verticeSelecionado){
+    verticeSelecionado = false;
+    return;
+  }
+  
   if(modoEdicao == MODO_VERTICE) {
     grafo.adicionarVertice(vertices++, mouseX, mouseY);
   } else if (modoEdicao == MODO_ARESTA) {
     Vertice v = grafo.obterVertice(mouseX, mouseY);
     if(v != null && verticeOrigem == null) {
       verticeOrigem = v;
+      verticeOrigem.setFoco(true);
     } else if (v != null && verticeDestino == null) {
       verticeDestino = v;
-      grafo.adicionarAresta(verticeOrigem.getId(), verticeDestino.getId());
-      verticeOrigem = null;
-      verticeDestino = null;
+      if (!verticeOrigem.equals(verticeDestino)){
+        grafo.adicionarAresta(verticeOrigem.getId(), verticeDestino.getId());
+        verticeOrigem.setFoco(false);
+        verticeOrigem = null;
+        verticeDestino = null;
+      } else {
+        verticeOrigem.setFoco(false);
+        verticeOrigem = null;
+        verticeDestino = null;
+      }
+    }
+  }
+}
+
+void mouseDragged(){
+  for (Vertice v : grafo.getVertices()){
+    if (dist(v.getX(), v.getY(), mouseX, mouseY) < raio){
+      v.setX(mouseX);
+      v.setY(mouseY);
+      verticeSelecionado = true;
     }
   }
 }
@@ -154,82 +178,4 @@ void keyPressed(){
       }
     }
   }
-}
-
-
-
-
-
-class ArestaException extends RuntimeException {
-  
-  public ArestaException(String mensagem) {
-    super(mensagem);
-  }
-
-}
-
-class VerticeException extends RuntimeException{
-
-  public VerticeException(String mensagem) {
-    super(mensagem);
-  }
-  
-}
-
-
-
-class BuscaEmProfundidade extends Thread {
-  
-  private int tempo = 0;
-  private Grafo grafo;
-  
-  public void run(){
-    try {
-      tempo = 0;
-      
-      for (Vertice v : grafo.getVertices()) {
-        v.setCor(Vertice.BRANCO);
-        v.setPredecessor(null);
-      }
-      
-      for (Vertice v : grafo.getVertices()) {
-        if(v.getCor() == Vertice.BRANCO) {
-          visitar(grafo, v);
-        }
-      }
-    } catch (InterruptedException e) {
-      System.out.println("Deu pau:" + e.getMessage());
-    }
-    
-  }
-  
-  public void visitar(Grafo grafo, Vertice vertice) throws InterruptedException {
-    tempo++;
-    vertice.setDescoberta(tempo);
-    vertice.setCor(Vertice.CINZA);
-    synchronized(this){
-      wait();
-    }
-    for (Vertice v : grafo.adjacentes(vertice)) {
-      if (v.getCor() == Vertice.BRANCO) {
-        v.setPredecessor(vertice);
-        visitar(grafo, v);
-      }
-    }
-    
-    synchronized(this){
-      vertice.setCor(Vertice.PRETO);
-      vertice.setFinalizacao(++tempo);
-      wait();
-    }
-  }
-  
-  public Grafo getGrafo() {
-    return this.grafo;
-  }
-  
-  public void setGrafo(Grafo grafo){
-    this.grafo = grafo;
-  }
-
 }
