@@ -14,10 +14,13 @@ Vertice verticeDestino = null;
 Thread algoritmo = null;
 boolean rodando = false;
 boolean verticeSelecionado = false;
+ArrayList<Widget> widgets;
 
 void setup(){
   size(600, 400);
   grafo = new Grafo();
+  widgets = new ArrayList<Widget>();
+  //widgets.add(new Botao(20, 20, 50, 20, "Ola mundo")); //<>//
 }
 
 
@@ -90,6 +93,10 @@ void draw() {
     }
     algoritmo.start();
   }
+  
+  for (Widget w : widgets){
+    w.desenhar();
+  }
 }
 
 void seta(int x1, int y1, int x2, int y2) {
@@ -120,6 +127,12 @@ void setaCurva(int x1, int y1, int x2, int y2) {
 
 
 void mouseReleased(){
+  for (Widget w : widgets){
+    if (w.click(mouseX, mouseY)){
+      return;
+    }
+  }
+  
   if (verticeSelecionado){
     verticeSelecionado = false;
     return;
